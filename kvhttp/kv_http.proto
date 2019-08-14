@@ -10,6 +10,7 @@ service KvHttpSrv {
     rpc Put (PutReq) returns (PutRsp) {
         option (google.api.http) = {
 			post: "/v1/kms/{keyPath}"
+			body: "*"
 		};
     }
 
@@ -22,6 +23,7 @@ service KvHttpSrv {
     rpc Patch (PatchReq) returns (PatchRsp) {
         option (google.api.http) = {
 			patch: "/v1/kms/{keyPath}"
+			body: "*"
 		};
     }
 

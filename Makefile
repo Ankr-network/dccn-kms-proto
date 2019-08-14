@@ -3,4 +3,4 @@
 .PHONY: proto
 proto:
 	protoc --proto_path=. --go_out=plugins=grpc:. kv/kv.proto
-	protoc --proto_path=/home/mobius/project:. --grpc-gateway_out=logtostderr=true:. kvhttp/kv_http.proto
+	protoc --proto_path=/home/mobius/project:. --go_out=plugins=grpc:. --grpc-gateway_out=logtostderr=true:. kvhttp/kv_http.proto
