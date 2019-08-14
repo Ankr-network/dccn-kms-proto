@@ -2,18 +2,40 @@ syntax = "proto3";
 
 package kms.kv;
 
+import "google/api/annotations.proto";
+
 service KVSrv {
     rpc Put (PutReq) returns (PutRsp) {
+        option (google.api.http) = {
+			post: "/v1/kms/{path}"
+			body: "*"
+		};
     }
     rpc Get (GetReq) returns (GetRsp) {
+        option (google.api.http) = {
+			get: "/v1/kms/{path}"
+		};
     }
     rpc Patch (PatchReq) returns (PatchRsp) {
+        option (google.api.http) = {
+			patch: "/v1/kms/{path}"
+			body: "*"
+		};
     }
     rpc List (ListReq) returns (ListRsp) {
+        option (google.api.http) = {
+			get: "/v1/kms/keys/{path}"
+		};
     }
     rpc Delete (DeleteReq) returns (DeleteRsp) {
+        option (google.api.http) = {
+			delete: "/v1/kms/{path}"
+		};
     }
     rpc Rollback (RollbackReq) returns (RollbackRsp) {
+        option (google.api.http) = {
+			delete: "/v1/kms/{path}"
+		};
     }
 }
 message DataNode {
