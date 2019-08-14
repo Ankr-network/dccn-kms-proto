@@ -1,0 +1,79 @@
+syntax = "proto3";
+
+package kms.kv;
+
+service KVSrv {
+    rpc Put (PutReq) returns (PutRsp) {
+    }
+    rpc Get (GetReq) returns (GetRsp) {
+    }
+    rpc Patch (PatchReq) returns (PatchRsp) {
+    }
+    rpc List (ListReq) returns (ListRsp) {
+    }
+    rpc Delete (DeleteReq) returns (DeleteRsp) {
+    }
+    rpc Rollback (RollbackReq) returns (RollbackRsp) {
+    }
+}
+message DataNode {
+    string key = 1;
+    string val = 2;
+}
+message PutReq {
+    string path = 1;
+    repeated DataNode dns = 2;
+}
+message PutRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message GetReq {
+    string path = 1;
+}
+
+message GetRsp {
+    string code = 1;
+    string desc = 2;
+    string path = 3;
+    repeated DataNode dns = 4;
+}
+
+message PatchReq {
+    string path = 1;
+    repeated DataNode dns = 2;
+}
+
+message PatchRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message ListReq {
+    string path = 1;
+}
+message ListRsp {
+    string code = 1;
+    string desc = 2;
+    string path = 3;
+    repeated string keys = 4;
+}
+
+message DeleteReq {
+    string path = 1;
+}
+
+message DeleteRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message RollbackReq {
+    string path = 1;
+}
+
+message RollbackRsp {
+    string code = 1;
+    string desc = 2;
+}

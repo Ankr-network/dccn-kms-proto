@@ -1,0 +1,107 @@
+syntax = "proto3";
+option go_package = "kvHttpPb";
+
+package kms.http.kv;
+
+import "google/api/annotations.proto";
+
+
+service KvHttpSrv {
+    rpc Put (PutReq) returns (PutRsp) {
+        option (google.api.http) = {
+			post: "/v1/kms/{keyPath}"
+		};
+    }
+
+    rpc Get (GetReq) returns (GetRsp) {
+        option (google.api.http) = {
+			get: "/v1/kms/{keyPath}"
+		};
+    }
+    // update: append data by key path
+    rpc Patch (PatchReq) returns (PatchRsp) {
+        option (google.api.http) = {
+			patch: "/v1/kms/{keyPath}"
+		};
+    }
+
+    rpc List (ListReq) returns (ListRsp) {
+        option (google.api.http) = {
+			get: "/v1/kms/keys/{keyPath}"
+		};
+    }
+
+    rpc Delete (DeleteReq) returns (DeleteRsp) {
+        option (google.api.http) = {
+			delete: "/v1/kms/{keyPath}"
+		};
+    }
+
+    rpc Rollback (RollbackReq) returns (RollbackRsp) {
+        option (google.api.http) = {
+			delete: "/v1/kms/{keyPath}"
+		};
+    }
+}
+
+message DataNode {
+    string key = 1;
+    string val = 2;
+}
+message PutReq {
+    string keyPath = 1;
+    repeated DataNode dns = 2;
+}
+message PutRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message GetReq {
+    string keyPath = 1;
+}
+
+message GetRsp {
+    string code = 1;
+    string desc = 2;
+    string path = 3;
+    repeated DataNode dns = 4;
+}
+
+message PatchReq {
+    string keyPath = 1;
+    repeated DataNode dns = 2;
+}
+
+message PatchRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message ListReq {
+    string keyPath = 1;
+}
+message ListRsp {
+    string code = 1;
+    string desc = 2;
+    string path = 3;
+    repeated string keys = 4;
+}
+
+message DeleteReq {
+    string keyPath = 1;
+}
+
+message DeleteRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message RollbackReq {
+    string keyPath = 1;
+}
+
+message RollbackRsp {
+    string code = 1;
+    string desc = 2;
+}
