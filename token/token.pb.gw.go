@@ -177,7 +177,7 @@ func RegisterTokenSrvHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 
 	})
 
-	mux.Handle("GET", pattern_TokenSrv_Check_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	mux.Handle("PATCH", pattern_TokenSrv_Check_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
 		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
@@ -203,9 +203,9 @@ func RegisterTokenSrvHandlerClient(ctx context.Context, mux *runtime.ServeMux, c
 var (
 	pattern_TokenSrv_Generator_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2}, []string{"kms", "v1", "token"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_TokenSrv_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "token"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_TokenSrv_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "token"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_TokenSrv_Check_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "token"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_TokenSrv_Check_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "token"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (

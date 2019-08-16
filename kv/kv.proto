@@ -7,34 +7,34 @@ import "google/api/annotations.proto";
 service KVSrv {
     rpc Put (PutReq) returns (PutRsp) {
         option (google.api.http) = {
-			post: "/kms/v1/{path}"
+			post: "/kms/v1/kv/{path}"
 			body: "*"
 		};
     }
     rpc Get (GetReq) returns (GetRsp) {
         option (google.api.http) = {
-			get: "/kms/v1/{path}"
+			get: "/kms/v1/kv/{path}"
 		};
     }
     rpc Patch (PatchReq) returns (PatchRsp) {
         option (google.api.http) = {
-			patch: "/kms/v1/{path}"
+			patch: "/kms/v1/kv/{path}"
 			body: "*"
 		};
     }
     rpc List (ListReq) returns (ListRsp) {
         option (google.api.http) = {
-			get: "/kms/v1/keys/{path}"
+			get: "/kms/v1/kv/keys/{path}"
 		};
     }
     rpc Delete (DeleteReq) returns (DeleteRsp) {
         option (google.api.http) = {
-			delete: "/kms/v1/{path}"
+			delete: "/kms/v1/kv/{path}"
 		};
     }
     rpc Rollback (RollbackReq) returns (RollbackRsp) {
         option (google.api.http) = {
-			delete: "/kms/v1/{path}"
+			delete: "/kms/v1/kv/{path}"
 		};
     }
 }

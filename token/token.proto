@@ -12,12 +12,12 @@ service TokenSrv {
     }
     rpc Get (GetReq) returns (GetRsp) {
         option (google.api.http) = {
-            get: "/kms/v1/{token}"
+            get: "/kms/v1/token/{token}"
             };
     }
     rpc Check (CheckReq) returns (CheckRsp) {
         option (google.api.http) = {
-            get: "/kms/v1/{token}"
+            patch: "/kms/v1/token/{token}"
             };
     }
 }
