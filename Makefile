@@ -4,3 +4,4 @@
 proto:
 	protoc --proto_path=/home/mobius/project:. --go_out=plugins=grpc:. --grpc-gateway_out=logtostderr=true:. kv/kv.proto
 	protoc --proto_path=/home/mobius/project:. --go_out=plugins=grpc:. --grpc-gateway_out=logtostderr=true:. token/token.proto
+	protoc --proto_path=/home/mobius/project:. --go_out=plugins=grpc:. --grpc-gateway_out=logtostderr=true:. identity/identity.proto

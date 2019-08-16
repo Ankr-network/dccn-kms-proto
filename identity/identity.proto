@@ -1,0 +1,103 @@
+syntax = "proto3";
+
+package kms.identity;
+
+import "google/api/annotations.proto";
+
+service IdentitySrv {
+    rpc Put (PutReq) returns (PutRsp) {
+        option (google.api.http) = {
+			post: "/kms/v1/identity/{name}"
+			additional_bindings {
+                post: "/kms/v1/identity-copy/{id}"
+			}
+			body: "*"
+		};
+    }
+    rpc Get (GetReq) returns (GetRsp) {
+        option (google.api.http) = {
+			get: "/kms/v1/identity/{name}"
+			additional_bindings {
+                get: "/kms/v1/identity-copy/{id}"
+			}
+		};
+    }
+    rpc Patch (PatchReq) returns (PatchRsp) {
+        option (google.api.http) = {
+			patch: "/kms/v1/identity/{name}"
+			additional_bindings {
+                patch: "/kms/v1/identity-copy/{id}"
+			}
+			body: "*"
+		};
+    }
+    rpc Delete (DeleteReq) returns (DeleteRsp) {
+        option (google.api.http) = {
+			delete: "/kms/v1/identity/{name}"
+			additional_bindings {
+                delete: "/kms/v1/identity-copy/{id}"
+			}
+		};
+    }
+}
+message DataNode {
+    string key = 1;
+    string val = 2;
+}
+
+message PutReq {
+    oneof code {
+        string name = 1;
+        string id = 2;
+    }
+    repeated DataNode meta = 3;
+    repeated string path = 4;
+}
+message PutRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message GetReq {
+    oneof code {
+        string name = 1;
+        string id = 2;
+    }
+}
+
+message GetRsp {
+    string code = 1;
+    string desc = 2;
+    string id = 3;
+    repeated DataNode meta = 4;
+    repeated string path = 5;
+}
+
+message PatchReq {
+    oneof code {
+        string name = 1;
+        string id = 2;
+    }
+    repeated DataNode dns = 3;
+    repeated DataNode meta = 4;
+    repeated string path = 5;
+}
+
+message PatchRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+message DeleteReq {
+    oneof code {
+        string name = 1;
+        string id = 2;
+    }
+}
+
+message DeleteRsp {
+    string code = 1;
+    string desc = 2;
+}
+
+
