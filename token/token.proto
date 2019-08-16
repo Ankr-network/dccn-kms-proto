@@ -13,6 +13,7 @@ service TokenSrv {
     rpc Get (GetReq) returns (GetRsp) {
         option (google.api.http) = {
             get: "/kms/v1/token/{token}"
+            body: "*"
             };
     }
     rpc Check (CheckReq) returns (CheckRsp) {
