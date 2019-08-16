@@ -1,0 +1,53 @@
+syntax = "proto3";
+package kms.token;
+
+import "google/api/annotations.proto";
+
+service TokenSrv {
+    rpc Generator (GenReq) returns (GenRsp) {
+        option (google.api.http) = {
+            post: "/kms/v1/token"
+            body: "*"
+            };
+    }
+    rpc Get (GetReq) returns (GetRsp) {
+        option (google.api.http) = {
+            get: "/kms/v1/{token}"
+            };
+    }
+    rpc Check (CheckReq) returns (CheckRsp) {
+        option (google.api.http) = {
+            get: "/kms/v1/{token}"
+            };
+    }
+}
+
+
+message GenReq {
+    string data = 1;
+}
+message GenRsp {
+    string code = 1;
+    string desc = 2;
+    string token = 3;
+}
+
+message GetReq {
+    string token = 1;
+}
+
+message GetRsp {
+    string code = 1;
+    string desc = 2;
+    string data = 3;
+}
+
+message CheckReq {
+    string token = 1;
+}
+
+message CheckRsp {
+    string code = 1;
+    string desc = 2;
+}
+

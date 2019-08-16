@@ -368,17 +368,17 @@ func RegisterKVSrvHandlerClient(ctx context.Context, mux *runtime.ServeMux, clie
 }
 
 var (
-	pattern_KVSrv_Put_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "kms", "path"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_KVSrv_Put_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "path"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_KVSrv_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "kms", "path"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_KVSrv_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "path"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_KVSrv_Patch_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "kms", "path"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_KVSrv_Patch_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "path"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_KVSrv_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"v1", "kms", "keys", "path"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_KVSrv_List_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "keys", "path"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_KVSrv_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "kms", "path"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_KVSrv_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "path"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_KVSrv_Rollback_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"v1", "kms", "path"}, "", runtime.AssumeColonVerbOpt(true)))
+	pattern_KVSrv_Rollback_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 1, 0, 4, 1, 5, 2}, []string{"kms", "v1", "path"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
