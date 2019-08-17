@@ -8,35 +8,23 @@ service IdentitySrv {
     rpc Put (PutReq) returns (PutRsp) {
         option (google.api.http) = {
 			post: "/kms/v1/identity/{name}"
-			additional_bindings {
-                post: "/kms/v1/identity-copy/{id}"
-			}
 			body: "*"
 		};
     }
     rpc Get (GetReq) returns (GetRsp) {
         option (google.api.http) = {
 			get: "/kms/v1/identity/{name}"
-			additional_bindings {
-                get: "/kms/v1/identity-copy/{id}"
-			}
 		};
     }
     rpc Patch (PatchReq) returns (PatchRsp) {
         option (google.api.http) = {
 			patch: "/kms/v1/identity/{name}"
-			additional_bindings {
-                patch: "/kms/v1/identity-copy/{id}"
-			}
 			body: "*"
 		};
     }
     rpc Delete (DeleteReq) returns (DeleteRsp) {
         option (google.api.http) = {
 			delete: "/kms/v1/identity/{name}"
-			additional_bindings {
-                delete: "/kms/v1/identity-copy/{id}"
-			}
 		};
     }
 }
@@ -46,12 +34,9 @@ message DataNode {
 }
 
 message PutReq {
-    oneof code {
-        string name = 1;
-        string id = 2;
-    }
-    repeated DataNode meta = 3;
-    repeated string path = 4;
+    string name = 1;
+    repeated DataNode meta = 2;
+    repeated string path = 3;
 }
 message PutRsp {
     string code = 1;
@@ -59,10 +44,7 @@ message PutRsp {
 }
 
 message GetReq {
-    oneof code {
-        string name = 1;
-        string id = 2;
-    }
+    string name = 1;
 }
 
 message GetRsp {
@@ -74,10 +56,7 @@ message GetRsp {
 }
 
 message PatchReq {
-    oneof code {
-        string name = 1;
-        string id = 2;
-    }
+    string name = 1;
     repeated DataNode dns = 3;
     repeated DataNode meta = 4;
     repeated string path = 5;
@@ -89,10 +68,7 @@ message PatchRsp {
 }
 
 message DeleteReq {
-    oneof code {
-        string name = 1;
-        string id = 2;
-    }
+    string name = 1;
 }
 
 message DeleteRsp {

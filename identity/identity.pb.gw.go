@@ -52,12 +52,7 @@ func request_IdentitySrv_Put_0(ctx context.Context, marshaler runtime.Marshaler,
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
-	if protoReq.Code == nil {
-		protoReq.Code = &PutReq_Name{}
-	} else if _, ok := protoReq.Code.(*PutReq_Name); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *PutReq_Name, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*PutReq_Name).Name, err = runtime.String(val)
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
@@ -67,53 +62,6 @@ func request_IdentitySrv_Put_0(ctx context.Context, marshaler runtime.Marshaler,
 	return msg, metadata, err
 
 }
-
-var (
-	filter_IdentitySrv_Put_1 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
-func request_IdentitySrv_Put_1(ctx context.Context, marshaler runtime.Marshaler, client IdentitySrvClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PutReq
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
-	}
-
-	if protoReq.Code == nil {
-		protoReq.Code = &PutReq_Id{}
-	} else if _, ok := protoReq.Code.(*PutReq_Id); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *PutReq_Id, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*PutReq_Id).Id, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
-	}
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_IdentitySrv_Put_1); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.Put(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-var (
-	filter_IdentitySrv_Get_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
 
 func request_IdentitySrv_Get_0(ctx context.Context, marshaler runtime.Marshaler, client IdentitySrvClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq GetReq
@@ -131,65 +79,10 @@ func request_IdentitySrv_Get_0(ctx context.Context, marshaler runtime.Marshaler,
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
-	if protoReq.Code == nil {
-		protoReq.Code = &GetReq_Name{}
-	} else if _, ok := protoReq.Code.(*GetReq_Name); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *GetReq_Name, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*GetReq_Name).Name, err = runtime.String(val)
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
-	}
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_IdentitySrv_Get_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.Get(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-var (
-	filter_IdentitySrv_Get_1 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
-func request_IdentitySrv_Get_1(ctx context.Context, marshaler runtime.Marshaler, client IdentitySrvClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq GetReq
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
-	}
-
-	if protoReq.Code == nil {
-		protoReq.Code = &GetReq_Id{}
-	} else if _, ok := protoReq.Code.(*GetReq_Id); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *GetReq_Id, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*GetReq_Id).Id, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
-	}
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_IdentitySrv_Get_1); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Get(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -221,12 +114,7 @@ func request_IdentitySrv_Patch_0(ctx context.Context, marshaler runtime.Marshale
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
-	if protoReq.Code == nil {
-		protoReq.Code = &PatchReq_Name{}
-	} else if _, ok := protoReq.Code.(*PatchReq_Name); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *PatchReq_Name, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*PatchReq_Name).Name, err = runtime.String(val)
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
@@ -236,53 +124,6 @@ func request_IdentitySrv_Patch_0(ctx context.Context, marshaler runtime.Marshale
 	return msg, metadata, err
 
 }
-
-var (
-	filter_IdentitySrv_Patch_1 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
-func request_IdentitySrv_Patch_1(ctx context.Context, marshaler runtime.Marshaler, client IdentitySrvClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq PatchReq
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
-	}
-
-	if protoReq.Code == nil {
-		protoReq.Code = &PatchReq_Id{}
-	} else if _, ok := protoReq.Code.(*PatchReq_Id); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *PatchReq_Id, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*PatchReq_Id).Id, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
-	}
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_IdentitySrv_Patch_1); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.Patch(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-var (
-	filter_IdentitySrv_Delete_0 = &utilities.DoubleArray{Encoding: map[string]int{"name": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
 
 func request_IdentitySrv_Delete_0(ctx context.Context, marshaler runtime.Marshaler, client IdentitySrvClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
 	var protoReq DeleteReq
@@ -300,65 +141,10 @@ func request_IdentitySrv_Delete_0(ctx context.Context, marshaler runtime.Marshal
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "name")
 	}
 
-	if protoReq.Code == nil {
-		protoReq.Code = &DeleteReq_Name{}
-	} else if _, ok := protoReq.Code.(*DeleteReq_Name); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *DeleteReq_Name, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*DeleteReq_Name).Name, err = runtime.String(val)
+	protoReq.Name, err = runtime.String(val)
 
 	if err != nil {
 		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "name", err)
-	}
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_IdentitySrv_Delete_0); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-
-	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
-	return msg, metadata, err
-
-}
-
-var (
-	filter_IdentitySrv_Delete_1 = &utilities.DoubleArray{Encoding: map[string]int{"id": 0}, Base: []int{1, 1, 0}, Check: []int{0, 1, 2}}
-)
-
-func request_IdentitySrv_Delete_1(ctx context.Context, marshaler runtime.Marshaler, client IdentitySrvClient, req *http.Request, pathParams map[string]string) (proto.Message, runtime.ServerMetadata, error) {
-	var protoReq DeleteReq
-	var metadata runtime.ServerMetadata
-
-	var (
-		val string
-		ok  bool
-		err error
-		_   = err
-	)
-
-	val, ok = pathParams["id"]
-	if !ok {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "missing parameter %s", "id")
-	}
-
-	if protoReq.Code == nil {
-		protoReq.Code = &DeleteReq_Id{}
-	} else if _, ok := protoReq.Code.(*DeleteReq_Id); !ok {
-		return nil, metadata, grpc.Errorf(codes.InvalidArgument, "expect type: *DeleteReq_Id, but: %t\n", protoReq.Code)
-	}
-	protoReq.Code.(*DeleteReq_Id).Id, err = runtime.String(val)
-
-	if err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "type mismatch, parameter: %s, error: %v", "id", err)
-	}
-
-	if err := req.ParseForm(); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
-	}
-	if err := runtime.PopulateQueryParameters(&protoReq, req.Form, filter_IdentitySrv_Delete_1); err != nil {
-		return nil, metadata, status.Errorf(codes.InvalidArgument, "%v", err)
 	}
 
 	msg, err := client.Delete(ctx, &protoReq, grpc.Header(&metadata.HeaderMD), grpc.Trailer(&metadata.TrailerMD))
@@ -424,26 +210,6 @@ func RegisterIdentitySrvHandlerClient(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("POST", pattern_IdentitySrv_Put_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_IdentitySrv_Put_1(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_IdentitySrv_Put_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	mux.Handle("GET", pattern_IdentitySrv_Get_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -461,26 +227,6 @@ func RegisterIdentitySrvHandlerClient(ctx context.Context, mux *runtime.ServeMux
 		}
 
 		forward_IdentitySrv_Get_0(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
-	mux.Handle("GET", pattern_IdentitySrv_Get_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_IdentitySrv_Get_1(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_IdentitySrv_Get_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
 
 	})
 
@@ -504,26 +250,6 @@ func RegisterIdentitySrvHandlerClient(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("PATCH", pattern_IdentitySrv_Patch_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_IdentitySrv_Patch_1(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_IdentitySrv_Patch_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	mux.Handle("DELETE", pattern_IdentitySrv_Delete_0, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 		ctx, cancel := context.WithCancel(req.Context())
 		defer cancel()
@@ -544,61 +270,25 @@ func RegisterIdentitySrvHandlerClient(ctx context.Context, mux *runtime.ServeMux
 
 	})
 
-	mux.Handle("DELETE", pattern_IdentitySrv_Delete_1, func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
-		ctx, cancel := context.WithCancel(req.Context())
-		defer cancel()
-		inboundMarshaler, outboundMarshaler := runtime.MarshalerForRequest(mux, req)
-		rctx, err := runtime.AnnotateContext(ctx, mux, req)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-		resp, md, err := request_IdentitySrv_Delete_1(rctx, inboundMarshaler, client, req, pathParams)
-		ctx = runtime.NewServerMetadataContext(ctx, md)
-		if err != nil {
-			runtime.HTTPError(ctx, mux, outboundMarshaler, w, req, err)
-			return
-		}
-
-		forward_IdentitySrv_Delete_1(ctx, mux, outboundMarshaler, w, req, resp, mux.GetForwardResponseOptions()...)
-
-	})
-
 	return nil
 }
 
 var (
 	pattern_IdentitySrv_Put_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity", "name"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_IdentitySrv_Put_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity-copy", "id"}, "", runtime.AssumeColonVerbOpt(true)))
-
 	pattern_IdentitySrv_Get_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity", "name"}, "", runtime.AssumeColonVerbOpt(true)))
-
-	pattern_IdentitySrv_Get_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity-copy", "id"}, "", runtime.AssumeColonVerbOpt(true)))
 
 	pattern_IdentitySrv_Patch_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity", "name"}, "", runtime.AssumeColonVerbOpt(true)))
 
-	pattern_IdentitySrv_Patch_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity-copy", "id"}, "", runtime.AssumeColonVerbOpt(true)))
-
 	pattern_IdentitySrv_Delete_0 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity", "name"}, "", runtime.AssumeColonVerbOpt(true)))
-
-	pattern_IdentitySrv_Delete_1 = runtime.MustPattern(runtime.NewPattern(1, []int{2, 0, 2, 1, 2, 2, 1, 0, 4, 1, 5, 3}, []string{"kms", "v1", "identity-copy", "id"}, "", runtime.AssumeColonVerbOpt(true)))
 )
 
 var (
 	forward_IdentitySrv_Put_0 = runtime.ForwardResponseMessage
 
-	forward_IdentitySrv_Put_1 = runtime.ForwardResponseMessage
-
 	forward_IdentitySrv_Get_0 = runtime.ForwardResponseMessage
-
-	forward_IdentitySrv_Get_1 = runtime.ForwardResponseMessage
 
 	forward_IdentitySrv_Patch_0 = runtime.ForwardResponseMessage
 
-	forward_IdentitySrv_Patch_1 = runtime.ForwardResponseMessage
-
 	forward_IdentitySrv_Delete_0 = runtime.ForwardResponseMessage
-
-	forward_IdentitySrv_Delete_1 = runtime.ForwardResponseMessage
 )
