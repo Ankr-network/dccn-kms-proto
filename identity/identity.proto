@@ -28,17 +28,14 @@ service IdentitySrv {
 		};
     }
 }
-message DataNode {
-    string key = 1;
-    string val = 2;
-}
 
 message PutReq {
     string name = 1;
-    repeated DataNode meta = 2;
+    map<string, string> meta = 2;
     repeated string path = 3;
 }
-message PutRsp {}
+message PutRsp {
+}
 
 message GetReq {
     string name = 1;
@@ -46,23 +43,24 @@ message GetReq {
 
 message GetRsp {
     string name = 1;
-    repeated DataNode meta = 2;
+    map<string, string> meta = 2;
     repeated string path = 3;
 }
 
 message PatchReq {
     string name = 1;
-    repeated DataNode dns = 2;
-    repeated DataNode meta = 3;
-    repeated string path = 4;
+    map<string, string> meta = 2;
+    repeated string path = 3;
 }
 
-message PatchRsp {}
+message PatchRsp {
+}
 
 message DeleteReq {
     string name = 1;
 }
 
-message DeleteRsp {}
+message DeleteRsp {
+}
 
 
