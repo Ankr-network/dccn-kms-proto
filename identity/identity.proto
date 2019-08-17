@@ -38,42 +38,31 @@ message PutReq {
     repeated DataNode meta = 2;
     repeated string path = 3;
 }
-message PutRsp {
-    string code = 1;
-    string desc = 2;
-}
+message PutRsp {}
 
 message GetReq {
     string name = 1;
 }
 
 message GetRsp {
-    string code = 1;
-    string desc = 2;
-    string id = 3;
-    repeated DataNode meta = 4;
-    repeated string path = 5;
+    string name = 1;
+    repeated DataNode meta = 2;
+    repeated string path = 3;
 }
 
 message PatchReq {
     string name = 1;
-    repeated DataNode dns = 3;
-    repeated DataNode meta = 4;
-    repeated string path = 5;
+    repeated DataNode dns = 2;
+    repeated DataNode meta = 3;
+    repeated string path = 4;
 }
 
-message PatchRsp {
-    string code = 1;
-    string desc = 2;
-}
+message PatchRsp {}
 
 message DeleteReq {
     string name = 1;
 }
 
-message DeleteRsp {
-    string code = 1;
-    string desc = 2;
-}
+message DeleteRsp {}
 
 

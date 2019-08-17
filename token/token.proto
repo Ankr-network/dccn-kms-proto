@@ -28,9 +28,7 @@ message GenReq {
     int64  ttl  = 2;
 }
 message GenRsp {
-    string code = 1;
-    string desc = 2;
-    string token = 3;
+    string token = 1;
 }
 
 message GetReq {
@@ -38,17 +36,12 @@ message GetReq {
 }
 
 message GetRsp {
-    string code = 1;
-    string desc = 2;
-    string data = 3;
+    string data = 1;
 }
 
 message CheckReq {
     string token = 1;
 }
 
-message CheckRsp {
-    string code = 1;
-    string desc = 2;
-}
+message CheckRsp {}
 

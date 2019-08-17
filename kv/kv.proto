@@ -46,20 +46,15 @@ message PutReq {
     string path = 1;
     repeated DataNode dns = 2;
 }
-message PutRsp {
-    string code = 1;
-    string desc = 2;
-}
+message PutRsp {}
 
 message GetReq {
     string path = 1;
 }
 
 message GetRsp {
-    string code = 1;
-    string desc = 2;
-    string path = 3;
-    repeated DataNode dns = 4;
+    string path = 1;
+    repeated DataNode dns = 2;
 }
 
 message PatchReq {
@@ -67,35 +62,24 @@ message PatchReq {
     repeated DataNode dns = 2;
 }
 
-message PatchRsp {
-    string code = 1;
-    string desc = 2;
-}
+message PatchRsp {}
 
 message ListReq {
     string path = 1;
 }
 message ListRsp {
-    string code = 1;
-    string desc = 2;
-    string path = 3;
-    repeated string keys = 4;
+    string path = 1;
+    repeated string keys = 2;
 }
 
 message DeleteReq {
     string path = 1;
 }
 
-message DeleteRsp {
-    string code = 1;
-    string desc = 2;
-}
+message DeleteRsp {}
 
 message RollbackReq {
     string path = 1;
 }
 
-message RollbackRsp {
-    string code = 1;
-    string desc = 2;
-}
+message RollbackRsp {}
